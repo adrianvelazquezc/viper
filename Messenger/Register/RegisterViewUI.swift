@@ -10,6 +10,8 @@ import UIKit
 
 protocol RegisterViewUIDelegate {
     func notifyFailureError(messageError: String)
+    func notifyAlert()
+    func notifyOption(optionChoosen: UIImagePickerController)
 }
 
 class RegisterViewUI: UIView{
@@ -21,15 +23,33 @@ class RegisterViewUI: UIView{
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
         scrollView.clipsToBounds = true
+        scrollView.isUserInteractionEnabled = true
         return scrollView
     }()
     
-    private let imageView: UIImageView = {
+    private var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.image = UIImage(named: "logo")
-        imageView.contentMode = .scaleAspectFit
+//            let gesture = UITapGestureRecognizer(target: self, action: #selector(didTapChangeProfilePic)) no funciona
+        imageView.isUserInteractionEnabled = true
+        imageView.image = UIImage(systemName: "person")
+        imageView.tintColor = .gray
+        imageView.contentMode = .scaleToFill
+//        imageView.addGestureRecognizer(gesture)
+        imageView.clipsToBounds = true
+        imageView.layer.borderWidth = 2
+        imageView.layer.borderColor = UIColor.red.cgColor
+        imageView.layer.cornerRadius = 50
+        
         return imageView
+    }()
+    
+    
+    private let hiddenButton:  UIButton = {
+    let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.addTarget(self, action: #selector(didTapChangeProfilePic), for: .touchUpInside)
+        return button
     }()
     
     
@@ -132,16 +152,17 @@ class RegisterViewUI: UIView{
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-    
     func setUI(){
         self.backgroundColor = .link
         self.addSubview(scrollView)
         scrollView.addSubview(imageView)
+        imageView.addSubview(hiddenButton)
         scrollView.addSubview(firstNameField)
         scrollView.addSubview(secondNameField)
         scrollView.addSubview(emailField)
         scrollView.addSubview(passwordField)
         scrollView.addSubview(loginButton)
+        
     }
     
     func setConstraints(){
@@ -153,9 +174,14 @@ class RegisterViewUI: UIView{
                 scrollView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -20),
                 
                 imageView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
-                imageView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-                imageView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
                 imageView.heightAnchor.constraint(equalToConstant: 100),
+                imageView.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+                imageView.widthAnchor.constraint(equalToConstant: 100),
+                
+                hiddenButton.topAnchor.constraint(equalTo: imageView.topAnchor),
+                hiddenButton.leadingAnchor.constraint(equalTo: imageView.leadingAnchor),
+                hiddenButton.trailingAnchor.constraint(equalTo: imageView.trailingAnchor),
+                hiddenButton.bottomAnchor.constraint(equalTo: imageView.bottomAnchor),
                 
                 firstNameField.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 20),
                 firstNameField.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
@@ -184,9 +210,6 @@ class RegisterViewUI: UIView{
     }
     
     
-    @objc private func didTapChangeProfilePic(){
-        
-    }
     
     @objc private func loginButtonTapped(){
         firstNameField.resignFirstResponder()
@@ -207,6 +230,18 @@ class RegisterViewUI: UIView{
               }
     }
     
+    public func maskCircle(anyImage: UIImageView) {
+        self.contentMode = UIView.ContentMode.scaleAspectFill
+        self.layer.cornerRadius = self.frame.height / 2
+        self.layer.masksToBounds = false
+        self.clipsToBounds = true
+
+       // make square(* must to make circle),
+       // resize(reduce the kilobyte) and
+       // fix rotation.
+       imageView = anyImage
+      }
+    
 }
     extension RegisterViewUI: UITextFieldDelegate{
         func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -219,4 +254,44 @@ class RegisterViewUI: UIView{
             }
             return true
         }
+        
+        @objc private func didTapChangeProfilePic(){
+            print("this works")
+            self.delegate?.notifyAlert()
+        }
+}
+
+
+extension RegisterViewUI: UIImagePickerControllerDelegate, UINavigationControllerDelegate{
+    
+    func presentCamera(){
+        let vc = UIImagePickerController()
+        vc.sourceType = .camera
+        vc.delegate = self
+        vc.allowsEditing = true
+        self.delegate?.notifyOption(optionChoosen: vc)
+        
+    }
+    
+    func presentPhootoPicker(){
+        let vc = UIImagePickerController()
+        vc.sourceType = .photoLibrary
+        vc.delegate = self
+        vc.allowsEditing = true
+        self.delegate?.notifyOption(optionChoosen: vc)
+    }
+    
+    
+    func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey : Any]) {
+        picker.dismiss(animated: true, completion: nil)
+        print(info)
+        let selectedImage = info[UIImagePickerController.InfoKey.editedImage]
+//        let selectedImage = info[UIImagePickerController.InfoKey.originalImage] por si no la quieres recortada
+        self.imageView.image = selectedImage as? UIImage
+        return
+    }
+    
+    func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        picker.dismiss(animated: true, completion: nil)
+    }
 }

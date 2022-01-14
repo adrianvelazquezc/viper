@@ -35,6 +35,26 @@ class RegisterView: UIViewController {
         self.present(alert, animated: true, completion: nil)
         
     }
+    
+    
+    func presentPhotoActionSheet(){
+        let actionSheet = UIAlertController(title: "Profile Picture", message: "How would you like to select a picture?", preferredStyle: .actionSheet)
+        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        actionSheet.addAction(UIAlertAction(title: "Take Photo", style: .default, handler: {[weak self]_ in
+            self?.ui?.presentCamera()
+        } ))
+        actionSheet.addAction(UIAlertAction(title: "Choose Photo", style: .default, handler:  {[weak self]_ in
+            self?.ui?.presentPhootoPicker()
+        }))
+        
+        
+        self.present(actionSheet, animated: true, completion: nil)
+    }
+    
+    func presentPickerController(optionChoosen: UIImagePickerController){
+        self.present(optionChoosen, animated: true, completion: nil)
+    }
+    
 }
 
 extension RegisterView: RegisterViewProtocol {
@@ -42,6 +62,14 @@ extension RegisterView: RegisterViewProtocol {
 }
 
 extension RegisterView: RegisterViewUIDelegate {
+    func notifyOption(optionChoosen: UIImagePickerController) {
+        presentPickerController(optionChoosen: optionChoosen)
+    }
+    
+    func notifyAlert() {
+        self.presentPhotoActionSheet()
+    }
+    
     func notifyFailureError(messageError: String) {
                 self.showError(message: messageError)
     }

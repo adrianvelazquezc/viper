@@ -6,7 +6,7 @@
 //
 
 import UIKit
-
+ 
 @main
 class AppDelegate: UIResponder, UIApplicationDelegate {
     var window: UIWindow?
@@ -21,6 +21,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         //navigation.isNavigationBarHidden = true
         
         let vc = LoginMain.createModule(navigation: navigation)
+        //let vc = RegisterMain.createModule(navigation: navigation)
         navigation.pushViewController(vc, animated: true)
         return true
     }
