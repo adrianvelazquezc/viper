@@ -24,14 +24,6 @@ class RegisterViewUI: UIView{
         return scrollView
     }()
     
-    
-    private let createAccountLabel: UILabel = {
-        let Label = UILabel()
-        Label.translatesAutoresizingMaskIntoConstraints = false
-        Label.text = "Create Account"
-        return Label
-    }()
-    
     public convenience init(
         navigation: UINavigationController,
         delegate: RegisterViewUIDelegate){
@@ -54,7 +46,6 @@ class RegisterViewUI: UIView{
     func setUI(){
         self.backgroundColor = .link
         self.addSubview(scrollView)
-        scrollView.addSubview(createAccountLabel)
     }
     
     func setConstraints(){
@@ -64,9 +55,6 @@ class RegisterViewUI: UIView{
                 scrollView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0),
                 scrollView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0),
                 scrollView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -20),
-                
-                createAccountLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 20),
-                createAccountLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
         ])
     }
 }

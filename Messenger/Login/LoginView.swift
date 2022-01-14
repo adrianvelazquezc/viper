@@ -17,6 +17,12 @@ class LoginView: UIViewController {
             navigation: self.navigationController!,
             delegate: self
         )
+        navigationItem.title = "Sign in"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Register",
+                            style: .done,
+                            target: self,
+                            action: #selector(didTapRegister))
+        
         view = ui
     }
 }
@@ -27,9 +33,10 @@ extension LoginView: LoginViewProtocol {
 }
 
 extension LoginView: LoginViewUIDelegate {
-    func notifyView() {
+    
+    @objc func didTapRegister() {
         self.presenter?.requestNextView()
-        }
+    }
     }
     
     

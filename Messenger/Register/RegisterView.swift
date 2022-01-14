@@ -16,7 +16,15 @@ class RegisterView: UIViewController {
         ui = RegisterViewUI(
             navigation: self.navigationController!,
             delegate: self
+            
+            
         )
+        
+
+        navigationItem.title = "Register"
+        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white] // cambia de color las letras del navigation bar
+        self.navigationController?.navigationBar.tintColor = .white // cambia de color la flecha de regreso y su texto
+
         view = ui
     }
 }

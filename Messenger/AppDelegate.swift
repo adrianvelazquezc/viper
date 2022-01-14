@@ -18,6 +18,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window = UIWindow(frame: UIScreen.main.bounds)
         window?.rootViewController = navigation
         window?.makeKeyAndVisible() //para hacerla la principal y visible
+        //navigation.isNavigationBarHidden = true
         
         let vc = LoginMain.createModule(navigation: navigation)
         navigation.pushViewController(vc, animated: true)

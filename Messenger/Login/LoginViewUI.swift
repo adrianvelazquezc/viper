@@ -9,8 +9,6 @@ import Foundation
 import UIKit
 
 protocol LoginViewUIDelegate {
-    
-    func notifyView()
 }
 
 class LoginViewUI: UIView{
@@ -36,7 +34,6 @@ class LoginViewUI: UIView{
         Button.translatesAutoresizingMaskIntoConstraints = false
         Button.setTitle("Register", for: .normal)
         Button.setTitleColor(.link, for: .normal)
-        Button.addTarget(self, action: #selector(didTapRegister), for: .touchUpInside)
         return Button
     }()
     private let imageView: UIImageView = {
@@ -57,12 +54,12 @@ class LoginViewUI: UIView{
         field.layer.borderWidth = 1
         field.layer.borderColor = UIColor.lightGray.cgColor
         field.placeholder = "Email Address..."
-        field.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 5, height: 0))
+        field.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: 0))
         field.leftViewMode = .always
         field.backgroundColor = .white
         return field
     }()
-    private let passwordField: UITextField = {
+        private let passwordField: UITextField = {
         let field = UITextField()
         field.translatesAutoresizingMaskIntoConstraints = false
         field.autocapitalizationType = .none
@@ -72,12 +69,26 @@ class LoginViewUI: UIView{
         field.layer.borderWidth = 1
         field.layer.borderColor = UIColor.lightGray.cgColor
         field.placeholder = "Password ..."
-        field.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 5, height: 0))
+        field.leftView = UIView(frame: CGRect(x: 0, y: 0, width: 15, height: 0))
         field.leftViewMode = .always
         field.backgroundColor = .white
         field.isSecureTextEntry = true
         return field
     }()
+    
+    private let loginButton:  UIButton = {
+    let button = UIButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.setTitle("Log In", for: .normal)
+        button.backgroundColor = .link
+        button.setTitleColor(.white, for: .normal)
+        button.layer.cornerRadius = 12
+        button.layer.masksToBounds = true
+        button.titleLabel?.font = .systemFont(ofSize: 20, weight: .bold)
+        button.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
+        return button
+    }()
+    
     
     public convenience init(
         navigation: UINavigationController,
@@ -100,51 +111,55 @@ class LoginViewUI: UIView{
     func setUI(){
         self.backgroundColor = .white
         self.addSubview(scrollView)
-        scrollView.addSubview(logInLabel)
-        scrollView.addSubview(signInButton)
         scrollView.addSubview(imageView)
         scrollView.addSubview(emailField)
         scrollView.addSubview(passwordField)
+        scrollView.addSubview(loginButton)
         
     }
     
     func setConstraints(){
         NSLayoutConstraint.activate([
             
-                scrollView.topAnchor.constraint(equalTo: self.topAnchor, constant: 20),
-                scrollView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 0),
-                scrollView.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 0),
-                scrollView.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -20),
-                
-                logInLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 20),
-                logInLabel.centerXAnchor.constraint(equalTo: self.centerXAnchor),
+            scrollView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 20),
+            scrollView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 0),
+            scrollView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: 0),
+            scrollView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -20),
                 
                 
-                signInButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
-                signInButton.leadingAnchor.constraint(equalTo: logInLabel.trailingAnchor, constant: -20),
-//                signInButton.centerYAnchor.constraint(equalTo: logInLabel.centerYAnchor),
-                
-                imageView.topAnchor.constraint(equalTo: logInLabel.bottomAnchor),
+                imageView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
                 imageView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
                 imageView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
                 imageView.heightAnchor.constraint(equalToConstant: 100),
                 
                 emailField.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 20),
-                emailField.centerXAnchor.constraint(equalTo: self.centerXAnchor),
                 emailField.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
                 emailField.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
                 emailField.heightAnchor.constraint(equalToConstant: 40),
                 
                 passwordField.topAnchor.constraint(equalTo: emailField.bottomAnchor, constant: 20),
-                passwordField.centerXAnchor.constraint(equalTo: self.centerXAnchor),
                 passwordField.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
                 passwordField.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
                 passwordField.heightAnchor.constraint(equalToConstant: 40),
+                
+                loginButton.topAnchor.constraint(equalTo: passwordField.bottomAnchor, constant:  50),
+                loginButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
+                loginButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
         ])
     }
+    @objc private func loginButtonTapped(){
+        print("jala")
+        guard let email = emailField.text, let password = passwordField.text,
+              !email.isEmpty, !password.isEmpty, password.count >= 6 else {
+                  alertUserLoginError()
+                  return
+              }
+        //firebase log in
+    }
     
-    @objc func didTapRegister() {
-        print("algo")
-        self.delegate?.notifyView()
+    func alertUserLoginError(){
+        let alert = UIAlertController(title: "Woops", message: "Please enter all information to log in", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
+            //present(alert,animated:true)
     }
 }
