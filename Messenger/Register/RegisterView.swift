@@ -27,6 +27,14 @@ class RegisterView: UIViewController {
 
         view = ui
     }
+    
+    
+    func showError(message: String){
+        let alert = UIAlertController(title: "Woops", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+        
+    }
 }
 
 extension RegisterView: RegisterViewProtocol {
@@ -34,5 +42,9 @@ extension RegisterView: RegisterViewProtocol {
 }
 
 extension RegisterView: RegisterViewUIDelegate {
+    func notifyFailureError(messageError: String) {
+                self.showError(message: messageError)
+    }
+    
     
 }

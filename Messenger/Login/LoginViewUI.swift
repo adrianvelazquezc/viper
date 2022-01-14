@@ -9,6 +9,7 @@ import Foundation
 import UIKit
 
 protocol LoginViewUIDelegate {
+    func notifyFailureError(messageError: String)
 }
 
 class LoginViewUI: UIView{
@@ -23,19 +24,6 @@ class LoginViewUI: UIView{
         return scrollView
     }()
     
-    private let logInLabel: UILabel = {
-        let Label = UILabel()
-        Label.translatesAutoresizingMaskIntoConstraints = false
-        Label.text = "Log In"
-        return Label
-    }()
-    private let signInButton: UIButton = {
-        let Button = UIButton()
-        Button.translatesAutoresizingMaskIntoConstraints = false
-        Button.setTitle("Register", for: .normal)
-        Button.setTitleColor(.link, for: .normal)
-        return Button
-    }()
     private let imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
@@ -59,6 +47,7 @@ class LoginViewUI: UIView{
         field.backgroundColor = .white
         return field
     }()
+    
         private let passwordField: UITextField = {
         let field = UITextField()
         field.translatesAutoresizingMaskIntoConstraints = false
@@ -96,6 +85,8 @@ class LoginViewUI: UIView{
             self.init()
             self.delegate = delegate
             self.navigationController = navigation
+            emailField.delegate = self
+            passwordField.delegate = self
             setUI()
             setConstraints()
         }
@@ -148,18 +139,26 @@ class LoginViewUI: UIView{
         ])
     }
     @objc private func loginButtonTapped(){
-        print("jala")
+        emailField.resignFirstResponder()
+        passwordField.resignFirstResponder()
         guard let email = emailField.text, let password = passwordField.text,
               !email.isEmpty, !password.isEmpty, password.count >= 6 else {
-                  alertUserLoginError()
+                  self.delegate?.notifyFailureError(messageError: "please enter all information to sig in")
                   return
               }
-        //firebase log in
     }
     
-    func alertUserLoginError(){
-        let alert = UIAlertController(title: "Woops", message: "Please enter all information to log in", preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
-            //present(alert,animated:true)
+}
+
+extension LoginViewUI: UITextFieldDelegate{
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        
+        if textField == emailField{
+            passwordField.becomeFirstResponder()
+        }
+        else if textField == passwordField{
+            loginButtonTapped()
+        }
+        return true
     }
 }

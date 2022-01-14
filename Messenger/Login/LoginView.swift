@@ -25,6 +25,14 @@ class LoginView: UIViewController {
         
         view = ui
     }
+    
+    
+    func showError(message: String){
+        let alert = UIAlertController(title: "Woops", message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
+        self.present(alert, animated: true, completion: nil)
+        
+    }
 }
 
 extension LoginView: LoginViewProtocol {
@@ -33,6 +41,10 @@ extension LoginView: LoginViewProtocol {
 }
 
 extension LoginView: LoginViewUIDelegate {
+    func notifyFailureError(messageError: String) {
+            self.showError(message: messageError)
+    }
+    
     
     @objc func didTapRegister() {
         self.presenter?.requestNextView()
