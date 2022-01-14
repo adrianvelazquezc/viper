@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import FirebaseAuth
 
 protocol LoginViewUIDelegate {
     func notifyFailureError(messageError: String)
@@ -48,7 +49,7 @@ class LoginViewUI: UIView{
         return field
     }()
     
-        private let passwordField: UITextField = {
+    private let passwordField: UITextField = {
         let field = UITextField()
         field.translatesAutoresizingMaskIntoConstraints = false
         field.autocapitalizationType = .none
@@ -66,7 +67,7 @@ class LoginViewUI: UIView{
     }()
     
     private let loginButton:  UIButton = {
-    let button = UIButton()
+        let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Log In", for: .normal)
         button.backgroundColor = .link
@@ -111,31 +112,29 @@ class LoginViewUI: UIView{
     
     func setConstraints(){
         NSLayoutConstraint.activate([
-            
             scrollView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor, constant: 20),
             scrollView.leadingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.leadingAnchor, constant: 0),
             scrollView.trailingAnchor.constraint(equalTo: self.safeAreaLayoutGuide.trailingAnchor, constant: 0),
             scrollView.bottomAnchor.constraint(equalTo: self.safeAreaLayoutGuide.bottomAnchor, constant: -20),
-                
-                
-                imageView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
-                imageView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-                imageView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-                imageView.heightAnchor.constraint(equalToConstant: 100),
-                
-                emailField.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 20),
-                emailField.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
-                emailField.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
-                emailField.heightAnchor.constraint(equalToConstant: 40),
-                
-                passwordField.topAnchor.constraint(equalTo: emailField.bottomAnchor, constant: 20),
-                passwordField.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
-                passwordField.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
-                passwordField.heightAnchor.constraint(equalToConstant: 40),
-                
-                loginButton.topAnchor.constraint(equalTo: passwordField.bottomAnchor, constant:  50),
-                loginButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
-                loginButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
+            
+            imageView.topAnchor.constraint(equalTo: self.safeAreaLayoutGuide.topAnchor),
+            imageView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            imageView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            imageView.heightAnchor.constraint(equalToConstant: 100),
+            
+            emailField.topAnchor.constraint(equalTo: imageView.bottomAnchor, constant: 20),
+            emailField.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
+            emailField.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
+            emailField.heightAnchor.constraint(equalToConstant: 40),
+            
+            passwordField.topAnchor.constraint(equalTo: emailField.bottomAnchor, constant: 20),
+            passwordField.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
+            passwordField.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
+            passwordField.heightAnchor.constraint(equalToConstant: 40),
+            
+            loginButton.topAnchor.constraint(equalTo: passwordField.bottomAnchor, constant:  50),
+            loginButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
+            loginButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
         ])
     }
     @objc private func loginButtonTapped(){
@@ -146,13 +145,25 @@ class LoginViewUI: UIView{
                   self.delegate?.notifyFailureError(messageError: "please enter all information to sig in")
                   return
               }
+        FirebaseAuth.Auth.auth().signIn(withEmail: email, password: password, completion: {[weak self] authResult, error in
+            guard let strongSelf = self else {
+                
+                return
+            }
+            
+            guard let result = authResult, error == nil else{
+                print("Failed to log in user with email: \(email)")
+                return
+            }
+            let user = result.user
+            print("Logged In User: \(user)")
+            strongSelf.navigationController?.dismiss(animated: true, completion: nil)
+        })
     }
-    
 }
 
 extension LoginViewUI: UITextFieldDelegate{
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        
         if textField == emailField{
             passwordField.becomeFirstResponder()
         }

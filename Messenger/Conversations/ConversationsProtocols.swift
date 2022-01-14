@@ -12,13 +12,12 @@ protocol ConversationsViewProtocol: AnyObject {
 }
 
 protocol ConversationsInteractorProtocol: AnyObject {
-    
 }
 
 protocol ConversationsPresenterProtocol: AnyObject {
-    
+    func requestNextView()
 }
 
 protocol ConversationsRouterProtocol: AnyObject {
-    
+    func navigateNextView()
 }

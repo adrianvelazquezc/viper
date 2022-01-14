@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import FirebaseAuth
 
 protocol RegisterViewUIDelegate {
     func notifyFailureError(messageError: String)
@@ -30,17 +31,14 @@ class RegisterViewUI: UIView{
     private var imageView: UIImageView = {
         let imageView = UIImageView()
         imageView.translatesAutoresizingMaskIntoConstraints = false
-//            let gesture = UITapGestureRecognizer(target: self, action: #selector(didTapChangeProfilePic)) no funciona
         imageView.isUserInteractionEnabled = true
-        imageView.image = UIImage(systemName: "person")
+        imageView.image = UIImage(systemName: "person.circle")
         imageView.tintColor = .gray
         imageView.contentMode = .scaleToFill
-//        imageView.addGestureRecognizer(gesture)
         imageView.clipsToBounds = true
         imageView.layer.borderWidth = 2
-        imageView.layer.borderColor = UIColor.red.cgColor
+        imageView.layer.borderColor = UIColor.lightGray.cgColor
         imageView.layer.cornerRadius = 50
-        
         return imageView
     }()
     
@@ -124,7 +122,7 @@ class RegisterViewUI: UIView{
     let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
         button.setTitle("Register", for: .normal)
-        button.backgroundColor = .green
+        button.backgroundColor = .systemGreen
         button.setTitleColor(.white, for: .normal)
         button.layer.cornerRadius = 12
         button.layer.masksToBounds = true
@@ -153,7 +151,7 @@ class RegisterViewUI: UIView{
         super.init(coder: aDecoder)
     }
     func setUI(){
-        self.backgroundColor = .link
+        self.backgroundColor = .white
         self.addSubview(scrollView)
         scrollView.addSubview(imageView)
         imageView.addSubview(hiddenButton)
@@ -206,6 +204,7 @@ class RegisterViewUI: UIView{
                 loginButton.topAnchor.constraint(equalTo: passwordField.bottomAnchor, constant:  50),
                 loginButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
                 loginButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
+                loginButton.heightAnchor.constraint(equalToConstant: 40)
         ])
     }
     
@@ -228,19 +227,20 @@ class RegisterViewUI: UIView{
                   self.delegate?.notifyFailureError(messageError: "please enter all information to create a new account")
                   return
               }
+        FirebaseAuth.Auth.auth().createUser(withEmail: email, password: password, completion: {
+           [weak self] authResult, error in
+            guard let strongSelf = self else {
+                return
+            }
+            guard let result = authResult, error == nil else {
+                print("Error cureating user")
+                return
+            }
+            let user = result.user
+            print("Create user: \(user)")
+            strongSelf.navigationController?.dismiss(animated: true, completion: nil)
+       })
     }
-    
-    public func maskCircle(anyImage: UIImageView) {
-        self.contentMode = UIView.ContentMode.scaleAspectFill
-        self.layer.cornerRadius = self.frame.height / 2
-        self.layer.masksToBounds = false
-        self.clipsToBounds = true
-
-       // make square(* must to make circle),
-       // resize(reduce the kilobyte) and
-       // fix rotation.
-       imageView = anyImage
-      }
     
 }
     extension RegisterViewUI: UITextFieldDelegate{
@@ -286,7 +286,6 @@ extension RegisterViewUI: UIImagePickerControllerDelegate, UINavigationControlle
         picker.dismiss(animated: true, completion: nil)
         print(info)
         let selectedImage = info[UIImagePickerController.InfoKey.editedImage]
-//        let selectedImage = info[UIImagePickerController.InfoKey.originalImage] por si no la quieres recortada
         self.imageView.image = selectedImage as? UIImage
         return
     }

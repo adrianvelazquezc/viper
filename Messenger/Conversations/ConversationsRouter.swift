@@ -13,5 +13,11 @@ class ConversationsRouter{
 }
 
 extension ConversationsRouter: ConversationsRouterProtocol{
+    func navigateNextView() {
+        if let nav = self.navigation {
+            let vc = LoginMain.createModule(navigation: nav)
+            nav.pushViewController(vc, animated: true)
+    }
+    }
     
 }

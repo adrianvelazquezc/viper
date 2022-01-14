@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 protocol ConversationsViewUIDelegate {
-    
+    func notifyNextView()
 }
 
 class ConversationsViewUI: UIView{
@@ -36,7 +36,8 @@ class ConversationsViewUI: UIView{
     }
     
     func setUI(){
-        
+        self.backgroundColor = .red
+        self.delegate?.notifyNextView()
     }
     
     func setConstraints(){

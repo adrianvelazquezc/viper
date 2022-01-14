@@ -22,8 +22,8 @@ class RegisterView: UIViewController {
         
 
         navigationItem.title = "Register"
-        self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white] // cambia de color las letras del navigation bar
-        self.navigationController?.navigationBar.tintColor = .white // cambia de color la flecha de regreso y su texto
+        //self.navigationController?.navigationBar.titleTextAttributes = [.foregroundColor: UIColor.white] // cambia de color las letras del navigation bar
+        //self.navigationController?.navigationBar.tintColor = .white // cambia de color la flecha de regreso y su texto
 
         view = ui
     }

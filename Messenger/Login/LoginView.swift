@@ -8,6 +8,7 @@
 import Foundation
 import UIKit
 
+
 class LoginView: UIViewController {
     var presenter: LoginPresenterProtocol?
     private var ui: LoginViewUI?
@@ -17,7 +18,9 @@ class LoginView: UIViewController {
             navigation: self.navigationController!,
             delegate: self
         )
+        self.navigationController?.isNavigationBarHidden = false
         navigationItem.title = "Sign in"
+
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Register",
                             style: .done,
                             target: self,

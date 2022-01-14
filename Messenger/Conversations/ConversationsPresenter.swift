@@ -16,5 +16,9 @@ class ConversationsPresenter {
 
 
 extension ConversationsPresenter: ConversationsPresenterProtocol {
+    func requestNextView() {
+        self.router?.navigateNextView()
+    }
+    
     
 }
