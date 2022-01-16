@@ -3,21 +3,21 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>277115269386-00rmv5sjebviaih50l2b77jgtkuno168.apps.googleusercontent.com</string>
+	<string>535458354990-hc9vcfep2altevrdotu6m72kl31piuuv.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.277115269386-00rmv5sjebviaih50l2b77jgtkuno168</string>
+	<string>com.googleusercontent.apps.535458354990-hc9vcfep2altevrdotu6m72kl31piuuv</string>
 	<key>API_KEY</key>
-	<string>AIzaSyAU-crjKfTvmhPbZ5ppOhZzxKY9h-DNtxs</string>
+	<string>AIzaSyBDZ3s4JnCk26Ii4VG7MfZygkTujpQQBL8</string>
 	<key>GCM_SENDER_ID</key>
-	<string>277115269386</string>
+	<string>535458354990</string>
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
 	<string>com.Adrian.Messenger</string>
 	<key>PROJECT_ID</key>
-	<string>messenger-9492e</string>
+	<string>messenger-1d17d</string>
 	<key>STORAGE_BUCKET</key>
-	<string>messenger-9492e.appspot.com</string>
+	<string>messenger-1d17d.appspot.com</string>
 	<key>IS_ADS_ENABLED</key>
 	<false></false>
 	<key>IS_ANALYTICS_ENABLED</key>
@@ -29,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:277115269386:ios:82e402579d389e509dcaf3</string>
+	<string>1:535458354990:ios:0fc2530b9b3f607086ccbf</string>
 </dict>
 </plist>

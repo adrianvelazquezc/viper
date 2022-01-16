@@ -157,7 +157,7 @@ class LoginViewUI: UIView{
             }
             let user = result.user
             print("Logged In User: \(user)")
-            strongSelf.navigationController?.dismiss(animated: true, completion: nil)
+            self?.navigationController?.popViewController(animated: true)
         })
     }
 }

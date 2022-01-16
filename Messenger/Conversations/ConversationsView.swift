@@ -30,7 +30,7 @@ extension ConversationsView: ConversationsViewUIDelegate {
     func notifyNextView() {
         
         if Firebase.Auth.auth().currentUser == nil{
-            print(Firebase.Auth.auth().currentUser)
+        
         self.presenter?.requestNextView()
         }
     }

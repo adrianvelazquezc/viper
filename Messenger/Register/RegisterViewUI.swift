@@ -238,7 +238,8 @@ class RegisterViewUI: UIView{
             }
             let user = result.user
             print("Create user: \(user)")
-            strongSelf.navigationController?.dismiss(animated: true, completion: nil)
+            
+            self?.navigationController?.popToRootViewController(animated: true)
        })
     }
     
