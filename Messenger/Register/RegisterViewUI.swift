@@ -216,31 +216,42 @@ class RegisterViewUI: UIView{
         emailField.resignFirstResponder()
         passwordField.resignFirstResponder()
         guard let firstName = firstNameField.text,
-              let secondName = secondNameField.text,
+              let lastName = secondNameField.text,
               let email = emailField.text,
               let password = passwordField.text,
               !firstName.isEmpty,
-              !secondName.isEmpty,
+              !lastName.isEmpty,
               !email.isEmpty,
               !password.isEmpty,
               password.count >= 6 else {
                   self.delegate?.notifyFailureError(messageError: "please enter all information to create a new account")
                   return
               }
-        FirebaseAuth.Auth.auth().createUser(withEmail: email, password: password, completion: {
-           [weak self] authResult, error in
-            guard let strongSelf = self else {
+        
+        //firebase log in
+        DatabaseManager.shared.userExists(widh: email, completion: { [weak self] exist in
+            guard let strongSelf = self else{
                 return
             }
-            guard let result = authResult, error == nil else {
-                print("Error cureating user")
+            guard !exist else {
+                // user already exist
+                self?.delegate?.notifyFailureError(messageError: "Looks like a user account for that email address already exist")
                 return
             }
-            let user = result.user
-            print("Create user: \(user)")
             
-            self?.navigationController?.popToRootViewController(animated: true)
-       })
+            //si no existe
+    
+            FirebaseAuth.Auth.auth().createUser(withEmail: email, password: password, completion: {
+                authResult, error in
+                  guard authResult != nil, error == nil else {
+                      print("Error cureating user")
+                    return
+                }
+                DatabaseManager.shared.insertUser(with: ChatAppUser(firstName: firstName, lastName: lastName, emailAddress: email))
+                
+                self?.navigationController?.popToRootViewController(animated: true)
+           })
+        })
     }
     
 }

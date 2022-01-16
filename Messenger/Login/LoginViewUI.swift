@@ -140,6 +140,7 @@ class LoginViewUI: UIView{
     @objc private func loginButtonTapped(){
         emailField.resignFirstResponder()
         passwordField.resignFirstResponder()
+        
         guard let email = emailField.text, let password = passwordField.text,
               !email.isEmpty, !password.isEmpty, password.count >= 6 else {
                   self.delegate?.notifyFailureError(messageError: "please enter all information to sig in")
