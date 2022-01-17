@@ -9,6 +9,30 @@
 /* Begin PBXBuildFile section */
 		55B7879BB76C3AB81FD84256 /* Pods_Messenger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 2C9A8BBC9B43182D98CFA1BB /* Pods_Messenger.framework */; };
 		CE4AB442279237BD0021FFB0 /* Messenger.xcworkspace in Resources */ = {isa = PBXBuildFile; fileRef = CE4AB441279237BD0021FFB0 /* Messenger.xcworkspace */; };
+		CE585A77279608A3004F6131 /* NewConversationsViewUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE585A6F279608A3004F6131 /* NewConversationsViewUI.swift */; };
+		CE585A78279608A3004F6131 /* NewConversationsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE585A70279608A3004F6131 /* NewConversationsPresenter.swift */; };
+		CE585A79279608A3004F6131 /* NewConversationsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE585A71279608A3004F6131 /* NewConversationsRouter.swift */; };
+		CE585A7A279608A3004F6131 /* NewConversationsProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE585A72279608A3004F6131 /* NewConversationsProtocols.swift */; };
+		CE585A7B279608A3004F6131 /* NewConversationsMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE585A73279608A3004F6131 /* NewConversationsMain.swift */; };
+		CE585A7C279608A3004F6131 /* NewConversationsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE585A74279608A3004F6131 /* NewConversationsInteractor.swift */; };
+		CE585A7D279608A3004F6131 /* NewConversationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE585A75279608A3004F6131 /* NewConversationsView.swift */; };
+		CE585A7E279608A3004F6131 /* NewConversationsEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE585A76279608A3004F6131 /* NewConversationsEntity.swift */; };
+		CE585A87279608AC004F6131 /* ProfileViewUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE585A7F279608AC004F6131 /* ProfileViewUI.swift */; };
+		CE585A88279608AC004F6131 /* ProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE585A80279608AC004F6131 /* ProfilePresenter.swift */; };
+		CE585A89279608AC004F6131 /* ProfileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE585A81279608AC004F6131 /* ProfileRouter.swift */; };
+		CE585A8A279608AC004F6131 /* ProfileProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE585A82279608AC004F6131 /* ProfileProtocols.swift */; };
+		CE585A8B279608AC004F6131 /* ProfileMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE585A83279608AC004F6131 /* ProfileMain.swift */; };
+		CE585A8C279608AC004F6131 /* ProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE585A84279608AC004F6131 /* ProfileInteractor.swift */; };
+		CE585A8D279608AC004F6131 /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE585A85279608AC004F6131 /* ProfileView.swift */; };
+		CE585A8E279608AC004F6131 /* ProfileEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE585A86279608AC004F6131 /* ProfileEntity.swift */; };
+		CE7A46672795D8C90091FD19 /* VideoPlayerViewUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7A465F2795D8C90091FD19 /* VideoPlayerViewUI.swift */; };
+		CE7A46682795D8C90091FD19 /* VideoPlayerPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7A46602795D8C90091FD19 /* VideoPlayerPresenter.swift */; };
+		CE7A46692795D8C90091FD19 /* VideoPlayerRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7A46612795D8C90091FD19 /* VideoPlayerRouter.swift */; };
+		CE7A466A2795D8C90091FD19 /* VideoPlayerProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7A46622795D8C90091FD19 /* VideoPlayerProtocols.swift */; };
+		CE7A466B2795D8C90091FD19 /* VideoPlayerMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7A46632795D8C90091FD19 /* VideoPlayerMain.swift */; };
+		CE7A466C2795D8C90091FD19 /* VideoPlayerInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7A46642795D8C90091FD19 /* VideoPlayerInteractor.swift */; };
+		CE7A466D2795D8C90091FD19 /* VideoPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7A46652795D8C90091FD19 /* VideoPlayerView.swift */; };
+		CE7A466E2795D8C90091FD19 /* VideoPlayerEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7A46662795D8C90091FD19 /* VideoPlayerEntity.swift */; };
 		CE7AA6912794BABE00211437 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = CE7AA6902794BABE00211437 /* GoogleService-Info.plist */; };
 		CE7AA6932794CADE00211437 /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7AA6922794CADE00211437 /* DatabaseManager.swift */; };
 		CE8CB64A2790CE3C0042A17E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8CB6492790CE3C0042A17E /* AppDelegate.swift */; };
@@ -46,22 +70,6 @@
 		CE8CB6C42790F7180042A17E /* PhotoViewerInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8CB6BC2790F7180042A17E /* PhotoViewerInteractor.swift */; };
 		CE8CB6C52790F7180042A17E /* PhotoViewerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8CB6BD2790F7180042A17E /* PhotoViewerView.swift */; };
 		CE8CB6C62790F7180042A17E /* PhotoViewerEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8CB6BE2790F7180042A17E /* PhotoViewerEntity.swift */; };
-		CE8CB6CF2790F72A0042A17E /* VideoPlayerViewUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8CB6C72790F72A0042A17E /* VideoPlayerViewUI.swift */; };
-		CE8CB6D02790F72A0042A17E /* VideoPlayerPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8CB6C82790F72A0042A17E /* VideoPlayerPresenter.swift */; };
-		CE8CB6D12790F72A0042A17E /* VideoPlayerRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8CB6C92790F72A0042A17E /* VideoPlayerRouter.swift */; };
-		CE8CB6D22790F72A0042A17E /* VideoPlayerProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8CB6CA2790F72A0042A17E /* VideoPlayerProtocols.swift */; };
-		CE8CB6D32790F72A0042A17E /* VideoPlayerMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8CB6CB2790F72A0042A17E /* VideoPlayerMain.swift */; };
-		CE8CB6D42790F72A0042A17E /* VideoPlayerInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8CB6CC2790F72A0042A17E /* VideoPlayerInteractor.swift */; };
-		CE8CB6D52790F72A0042A17E /* VideoPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8CB6CD2790F72A0042A17E /* VideoPlayerView.swift */; };
-		CE8CB6D62790F72A0042A17E /* VideoPlayerEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8CB6CE2790F72A0042A17E /* VideoPlayerEntity.swift */; };
-		CE8CB6DF2790F73C0042A17E /* NewConversationsViewUI.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8CB6D72790F73C0042A17E /* NewConversationsViewUI.swift */; };
-		CE8CB6E02790F73C0042A17E /* NewConversationsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8CB6D82790F73C0042A17E /* NewConversationsPresenter.swift */; };
-		CE8CB6E12790F73C0042A17E /* NewConversationsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8CB6D92790F73C0042A17E /* NewConversationsRouter.swift */; };
-		CE8CB6E22790F73C0042A17E /* NewConversationsProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8CB6DA2790F73C0042A17E /* NewConversationsProtocols.swift */; };
-		CE8CB6E32790F73C0042A17E /* NewConversationsMain.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8CB6DB2790F73C0042A17E /* NewConversationsMain.swift */; };
-		CE8CB6E42790F73C0042A17E /* NewConversationsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8CB6DC2790F73C0042A17E /* NewConversationsInteractor.swift */; };
-		CE8CB6E52790F73C0042A17E /* NewConversationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8CB6DD2790F73C0042A17E /* NewConversationsView.swift */; };
-		CE8CB6E62790F73C0042A17E /* NewConversationsEntity.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8CB6DE2790F73C0042A17E /* NewConversationsEntity.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -69,6 +77,30 @@
 		4CDBBE261ABF346B8D39D5A9 /* Pods-Messenger.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Messenger.debug.xcconfig"; path = "Target Support Files/Pods-Messenger/Pods-Messenger.debug.xcconfig"; sourceTree = "<group>"; };
 		7917D555AA9881734D317668 /* Pods-Messenger.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Messenger.release.xcconfig"; path = "Target Support Files/Pods-Messenger/Pods-Messenger.release.xcconfig"; sourceTree = "<group>"; };
 		CE4AB441279237BD0021FFB0 /* Messenger.xcworkspace */ = {isa = PBXFileReference; lastKnownFileType = wrapper.workspace; path = Messenger.xcworkspace; sourceTree = SOURCE_ROOT; };
+		CE585A6F279608A3004F6131 /* NewConversationsViewUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewConversationsViewUI.swift; sourceTree = "<group>"; };
+		CE585A70279608A3004F6131 /* NewConversationsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewConversationsPresenter.swift; sourceTree = "<group>"; };
+		CE585A71279608A3004F6131 /* NewConversationsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewConversationsRouter.swift; sourceTree = "<group>"; };
+		CE585A72279608A3004F6131 /* NewConversationsProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewConversationsProtocols.swift; sourceTree = "<group>"; };
+		CE585A73279608A3004F6131 /* NewConversationsMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewConversationsMain.swift; sourceTree = "<group>"; };
+		CE585A74279608A3004F6131 /* NewConversationsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewConversationsInteractor.swift; sourceTree = "<group>"; };
+		CE585A75279608A3004F6131 /* NewConversationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewConversationsView.swift; sourceTree = "<group>"; };
+		CE585A76279608A3004F6131 /* NewConversationsEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewConversationsEntity.swift; sourceTree = "<group>"; };
+		CE585A7F279608AC004F6131 /* ProfileViewUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewUI.swift; sourceTree = "<group>"; };
+		CE585A80279608AC004F6131 /* ProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePresenter.swift; sourceTree = "<group>"; };
+		CE585A81279608AC004F6131 /* ProfileRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRouter.swift; sourceTree = "<group>"; };
+		CE585A82279608AC004F6131 /* ProfileProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileProtocols.swift; sourceTree = "<group>"; };
+		CE585A83279608AC004F6131 /* ProfileMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileMain.swift; sourceTree = "<group>"; };
+		CE585A84279608AC004F6131 /* ProfileInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInteractor.swift; sourceTree = "<group>"; };
+		CE585A85279608AC004F6131 /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		CE585A86279608AC004F6131 /* ProfileEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileEntity.swift; sourceTree = "<group>"; };
+		CE7A465F2795D8C90091FD19 /* VideoPlayerViewUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerViewUI.swift; sourceTree = "<group>"; };
+		CE7A46602795D8C90091FD19 /* VideoPlayerPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerPresenter.swift; sourceTree = "<group>"; };
+		CE7A46612795D8C90091FD19 /* VideoPlayerRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerRouter.swift; sourceTree = "<group>"; };
+		CE7A46622795D8C90091FD19 /* VideoPlayerProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerProtocols.swift; sourceTree = "<group>"; };
+		CE7A46632795D8C90091FD19 /* VideoPlayerMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerMain.swift; sourceTree = "<group>"; };
+		CE7A46642795D8C90091FD19 /* VideoPlayerInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerInteractor.swift; sourceTree = "<group>"; };
+		CE7A46652795D8C90091FD19 /* VideoPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerView.swift; sourceTree = "<group>"; };
+		CE7A46662795D8C90091FD19 /* VideoPlayerEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerEntity.swift; sourceTree = "<group>"; };
 		CE7AA6902794BABE00211437 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		CE7AA6922794CADE00211437 /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		CE8CB6462790CE3C0042A17E /* Messenger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Messenger.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -108,22 +140,6 @@
 		CE8CB6BC2790F7180042A17E /* PhotoViewerInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewerInteractor.swift; sourceTree = "<group>"; };
 		CE8CB6BD2790F7180042A17E /* PhotoViewerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewerView.swift; sourceTree = "<group>"; };
 		CE8CB6BE2790F7180042A17E /* PhotoViewerEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewerEntity.swift; sourceTree = "<group>"; };
-		CE8CB6C72790F72A0042A17E /* VideoPlayerViewUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerViewUI.swift; sourceTree = "<group>"; };
-		CE8CB6C82790F72A0042A17E /* VideoPlayerPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerPresenter.swift; sourceTree = "<group>"; };
-		CE8CB6C92790F72A0042A17E /* VideoPlayerRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerRouter.swift; sourceTree = "<group>"; };
-		CE8CB6CA2790F72A0042A17E /* VideoPlayerProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerProtocols.swift; sourceTree = "<group>"; };
-		CE8CB6CB2790F72A0042A17E /* VideoPlayerMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerMain.swift; sourceTree = "<group>"; };
-		CE8CB6CC2790F72A0042A17E /* VideoPlayerInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerInteractor.swift; sourceTree = "<group>"; };
-		CE8CB6CD2790F72A0042A17E /* VideoPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerView.swift; sourceTree = "<group>"; };
-		CE8CB6CE2790F72A0042A17E /* VideoPlayerEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = VideoPlayerEntity.swift; sourceTree = "<group>"; };
-		CE8CB6D72790F73C0042A17E /* NewConversationsViewUI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewConversationsViewUI.swift; sourceTree = "<group>"; };
-		CE8CB6D82790F73C0042A17E /* NewConversationsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewConversationsPresenter.swift; sourceTree = "<group>"; };
-		CE8CB6D92790F73C0042A17E /* NewConversationsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewConversationsRouter.swift; sourceTree = "<group>"; };
-		CE8CB6DA2790F73C0042A17E /* NewConversationsProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewConversationsProtocols.swift; sourceTree = "<group>"; };
-		CE8CB6DB2790F73C0042A17E /* NewConversationsMain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewConversationsMain.swift; sourceTree = "<group>"; };
-		CE8CB6DC2790F73C0042A17E /* NewConversationsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewConversationsInteractor.swift; sourceTree = "<group>"; };
-		CE8CB6DD2790F73C0042A17E /* NewConversationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewConversationsView.swift; sourceTree = "<group>"; };
-		CE8CB6DE2790F73C0042A17E /* NewConversationsEntity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewConversationsEntity.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,6 +205,14 @@
 		CE8CB6802790D0C10042A17E /* Profile */ = {
 			isa = PBXGroup;
 			children = (
+				CE585A7F279608AC004F6131 /* ProfileViewUI.swift */,
+				CE585A80279608AC004F6131 /* ProfilePresenter.swift */,
+				CE585A81279608AC004F6131 /* ProfileRouter.swift */,
+				CE585A82279608AC004F6131 /* ProfileProtocols.swift */,
+				CE585A83279608AC004F6131 /* ProfileMain.swift */,
+				CE585A84279608AC004F6131 /* ProfileInteractor.swift */,
+				CE585A85279608AC004F6131 /* ProfileView.swift */,
+				CE585A86279608AC004F6131 /* ProfileEntity.swift */,
 			);
 			path = Profile;
 			sourceTree = "<group>";
@@ -196,14 +220,14 @@
 		CE8CB6812790D0CE0042A17E /* NewConversations */ = {
 			isa = PBXGroup;
 			children = (
-				CE8CB6D72790F73C0042A17E /* NewConversationsViewUI.swift */,
-				CE8CB6D82790F73C0042A17E /* NewConversationsPresenter.swift */,
-				CE8CB6D92790F73C0042A17E /* NewConversationsRouter.swift */,
-				CE8CB6DA2790F73C0042A17E /* NewConversationsProtocols.swift */,
-				CE8CB6DB2790F73C0042A17E /* NewConversationsMain.swift */,
-				CE8CB6DC2790F73C0042A17E /* NewConversationsInteractor.swift */,
-				CE8CB6DD2790F73C0042A17E /* NewConversationsView.swift */,
-				CE8CB6DE2790F73C0042A17E /* NewConversationsEntity.swift */,
+				CE585A6F279608A3004F6131 /* NewConversationsViewUI.swift */,
+				CE585A70279608A3004F6131 /* NewConversationsPresenter.swift */,
+				CE585A71279608A3004F6131 /* NewConversationsRouter.swift */,
+				CE585A72279608A3004F6131 /* NewConversationsProtocols.swift */,
+				CE585A73279608A3004F6131 /* NewConversationsMain.swift */,
+				CE585A74279608A3004F6131 /* NewConversationsInteractor.swift */,
+				CE585A75279608A3004F6131 /* NewConversationsView.swift */,
+				CE585A76279608A3004F6131 /* NewConversationsEntity.swift */,
 			);
 			path = NewConversations;
 			sourceTree = "<group>";
@@ -211,14 +235,14 @@
 		CE8CB6822790D0DA0042A17E /* VideoPlayer */ = {
 			isa = PBXGroup;
 			children = (
-				CE8CB6C72790F72A0042A17E /* VideoPlayerViewUI.swift */,
-				CE8CB6C82790F72A0042A17E /* VideoPlayerPresenter.swift */,
-				CE8CB6C92790F72A0042A17E /* VideoPlayerRouter.swift */,
-				CE8CB6CA2790F72A0042A17E /* VideoPlayerProtocols.swift */,
-				CE8CB6CB2790F72A0042A17E /* VideoPlayerMain.swift */,
-				CE8CB6CC2790F72A0042A17E /* VideoPlayerInteractor.swift */,
-				CE8CB6CD2790F72A0042A17E /* VideoPlayerView.swift */,
-				CE8CB6CE2790F72A0042A17E /* VideoPlayerEntity.swift */,
+				CE7A465F2795D8C90091FD19 /* VideoPlayerViewUI.swift */,
+				CE7A46602795D8C90091FD19 /* VideoPlayerPresenter.swift */,
+				CE7A46612795D8C90091FD19 /* VideoPlayerRouter.swift */,
+				CE7A46622795D8C90091FD19 /* VideoPlayerProtocols.swift */,
+				CE7A46632795D8C90091FD19 /* VideoPlayerMain.swift */,
+				CE7A46642795D8C90091FD19 /* VideoPlayerInteractor.swift */,
+				CE7A46652795D8C90091FD19 /* VideoPlayerView.swift */,
+				CE7A46662795D8C90091FD19 /* VideoPlayerEntity.swift */,
 			);
 			path = VideoPlayer;
 			sourceTree = "<group>";
@@ -408,55 +432,63 @@
 			buildActionMask = 2147483647;
 			files = (
 				CE8CB6922790D1260042A17E /* LoginMain.swift in Sources */,
-				CE8CB6E42790F73C0042A17E /* NewConversationsInteractor.swift in Sources */,
 				CE8CB6B12790F4D00042A17E /* RegisterRouter.swift in Sources */,
-				CE8CB6E62790F73C0042A17E /* NewConversationsEntity.swift in Sources */,
 				CE8CB6C62790F7180042A17E /* PhotoViewerEntity.swift in Sources */,
+				CE7A46672795D8C90091FD19 /* VideoPlayerViewUI.swift in Sources */,
 				CE8CB68F2790D1260042A17E /* LoginPresenter.swift in Sources */,
+				CE7A466C2795D8C90091FD19 /* VideoPlayerInteractor.swift in Sources */,
+				CE585A8C279608AC004F6131 /* ProfileInteractor.swift in Sources */,
 				CE8CB6A02790D1470042A17E /* ConversationsPresenter.swift in Sources */,
-				CE8CB6D42790F72A0042A17E /* VideoPlayerInteractor.swift in Sources */,
+				CE585A87279608AC004F6131 /* ProfileViewUI.swift in Sources */,
 				CE8CB6A42790D1470042A17E /* ConversationsInteractor.swift in Sources */,
-				CE8CB6E52790F73C0042A17E /* NewConversationsView.swift in Sources */,
 				CE8CB6A22790D1470042A17E /* ConversationsProtocols.swift in Sources */,
-				CE8CB6E32790F73C0042A17E /* NewConversationsMain.swift in Sources */,
-				CE8CB6E22790F73C0042A17E /* NewConversationsProtocols.swift in Sources */,
-				CE8CB6D32790F72A0042A17E /* VideoPlayerMain.swift in Sources */,
 				CE8CB6932790D1260042A17E /* LoginInteractor.swift in Sources */,
 				CE8CB6C52790F7180042A17E /* PhotoViewerView.swift in Sources */,
 				CE8CB6A32790D1470042A17E /* ConversationsMain.swift in Sources */,
+				CE585A8B279608AC004F6131 /* ProfileMain.swift in Sources */,
+				CE585A8A279608AC004F6131 /* ProfileProtocols.swift in Sources */,
+				CE585A8D279608AC004F6131 /* ProfileView.swift in Sources */,
 				CE8CB6912790D1260042A17E /* LoginProtocols.swift in Sources */,
+				CE7A46692795D8C90091FD19 /* VideoPlayerRouter.swift in Sources */,
+				CE585A7E279608A3004F6131 /* NewConversationsEntity.swift in Sources */,
 				CE8CB68E2790D1260042A17E /* LoginViewUI.swift in Sources */,
 				CE8CB6AF2790F4D00042A17E /* RegisterViewUI.swift in Sources */,
 				CE8CB69F2790D1470042A17E /* ConversationsViewUI.swift in Sources */,
 				CE8CB6C02790F7180042A17E /* PhotoViewerPresenter.swift in Sources */,
+				CE585A79279608A3004F6131 /* NewConversationsRouter.swift in Sources */,
 				CE8CB6B22790F4D00042A17E /* RegisterProtocols.swift in Sources */,
 				CE8CB6B02790F4D00042A17E /* RegisterPresenter.swift in Sources */,
 				CE8CB6A62790D1470042A17E /* ConversationsEntity.swift in Sources */,
 				CE8CB6B32790F4D00042A17E /* RegisterMain.swift in Sources */,
-				CE8CB6CF2790F72A0042A17E /* VideoPlayerViewUI.swift in Sources */,
 				CE8CB6A12790D1470042A17E /* ConversationsRouter.swift in Sources */,
 				CE8CB6A52790D1470042A17E /* ConversationsView.swift in Sources */,
 				CE8CB6C12790F7180042A17E /* PhotoViewerRouter.swift in Sources */,
+				CE7A466A2795D8C90091FD19 /* VideoPlayerProtocols.swift in Sources */,
 				CE8CB6902790D1260042A17E /* LoginRouter.swift in Sources */,
-				CE8CB6DF2790F73C0042A17E /* NewConversationsViewUI.swift in Sources */,
+				CE585A7C279608A3004F6131 /* NewConversationsInteractor.swift in Sources */,
+				CE585A89279608AC004F6131 /* ProfileRouter.swift in Sources */,
 				CE7AA6932794CADE00211437 /* DatabaseManager.swift in Sources */,
 				CE8CB6C32790F7180042A17E /* PhotoViewerMain.swift in Sources */,
 				CE8CB6942790D1260042A17E /* LoginView.swift in Sources */,
-				CE8CB6D62790F72A0042A17E /* VideoPlayerEntity.swift in Sources */,
+				CE585A78279608A3004F6131 /* NewConversationsPresenter.swift in Sources */,
 				CE8CB64A2790CE3C0042A17E /* AppDelegate.swift in Sources */,
 				CE8CB6B52790F4D00042A17E /* RegisterView.swift in Sources */,
+				CE585A7B279608A3004F6131 /* NewConversationsMain.swift in Sources */,
+				CE585A88279608AC004F6131 /* ProfilePresenter.swift in Sources */,
 				CE8CB6B62790F4D00042A17E /* RegisterEntity.swift in Sources */,
+				CE585A7D279608A3004F6131 /* NewConversationsView.swift in Sources */,
 				CE8CB6C22790F7180042A17E /* PhotoViewerProtocols.swift in Sources */,
+				CE7A466E2795D8C90091FD19 /* VideoPlayerEntity.swift in Sources */,
+				CE585A7A279608A3004F6131 /* NewConversationsProtocols.swift in Sources */,
 				CE8CB6B42790F4D00042A17E /* RegisterInteractor.swift in Sources */,
-				CE8CB6E02790F73C0042A17E /* NewConversationsPresenter.swift in Sources */,
-				CE8CB6E12790F73C0042A17E /* NewConversationsRouter.swift in Sources */,
 				CE8CB6952790D1260042A17E /* LoginEntity.swift in Sources */,
 				CE8CB6C42790F7180042A17E /* PhotoViewerInteractor.swift in Sources */,
+				CE7A46682795D8C90091FD19 /* VideoPlayerPresenter.swift in Sources */,
 				CE8CB6BF2790F7180042A17E /* PhotoViewerViewUI.swift in Sources */,
-				CE8CB6D02790F72A0042A17E /* VideoPlayerPresenter.swift in Sources */,
-				CE8CB6D12790F72A0042A17E /* VideoPlayerRouter.swift in Sources */,
-				CE8CB6D22790F72A0042A17E /* VideoPlayerProtocols.swift in Sources */,
-				CE8CB6D52790F72A0042A17E /* VideoPlayerView.swift in Sources */,
+				CE7A466B2795D8C90091FD19 /* VideoPlayerMain.swift in Sources */,
+				CE7A466D2795D8C90091FD19 /* VideoPlayerView.swift in Sources */,
+				CE585A8E279608AC004F6131 /* ProfileEntity.swift in Sources */,
+				CE585A77279608A3004F6131 /* NewConversationsViewUI.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

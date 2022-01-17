@@ -1,25 +1,24 @@
 //
-//  ConversationsView.swift
+//  ProfileView.swift
 //  Messenger
 //
-//  Created by Mac on 13/01/22.
+//  Created by Mac on 17/01/22.
 //
 
 import Foundation
 import UIKit
-import Firebase
 
-class ConversationsView: UIViewController {
-    var presenter: ConversationsPresenterProtocol?
-    private var ui: ConversationsViewUI?
+class ProfileView: UIViewController {
+    var presenter: ProfilePresenterProtocol?
+    private var ui: ProfileViewUI?
     
     override func loadView() {
-        ui = ConversationsViewUI(
+        ui = ProfileViewUI(
             navigation: self.navigationController!,
             delegate: self
         )
         view = ui
-        navigationItem.title = "Chat"
+        navigationItem.title = "Profile"
         navigationController?.navigationBar.prefersLargeTitles = true
     }
     // esconder navigation bar
@@ -27,18 +26,14 @@ class ConversationsView: UIViewController {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
     }
+}
+
+extension ProfileView: ProfileViewProtocol {
     
 }
 
-
-extension ConversationsView: ConversationsViewProtocol {
-    
-}
-
-extension ConversationsView: ConversationsViewUIDelegate {
+extension ProfileView: ProfileViewUIDelegate {
     func notifyNextView() {
-        
-        
         self.presenter?.requestNextView()
     }
     

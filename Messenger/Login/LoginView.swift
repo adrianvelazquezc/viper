@@ -20,6 +20,7 @@ class LoginView: UIViewController {
         )
         self.navigationController?.isNavigationBarHidden = false
         navigationItem.title = "Sign in"
+        
 
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Register",
                             style: .done,

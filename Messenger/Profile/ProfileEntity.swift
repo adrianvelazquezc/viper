@@ -1,5 +1,5 @@
 //
-//  NewConversationsEntity.swift
+//  ProfileEntity.swift
 //  Messenger
 //
 //  Created by Mac on 17/01/22.

@@ -1,5 +1,5 @@
 //
-//  VideoPlayerMain.swift
+//  ProfileMain.swift
 //  Messenger
 //
 //  Created by Mac on 17/01/22.
@@ -8,13 +8,13 @@
 import Foundation
 import UIKit
 
-open class VideoPlayerMain{
+open class ProfileMain{
     public static func createModule(navigation: UINavigationController) -> UIViewController {
-        let viewController: VideoPlayerView? = VideoPlayerView()
+        let viewController: ProfileView? = ProfileView()
         if let view = viewController {
-            let presenter = VideoPlayerPresenter()
-            let router = VideoPlayerRouter()
-            let interactor = VideoPlayerInteractor()
+            let presenter = ProfilePresenter()
+            let router = ProfileRouter()
+            let interactor = ProfileInteractor()
             
             view.presenter = presenter
             

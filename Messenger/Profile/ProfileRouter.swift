@@ -1,23 +1,22 @@
 //
-//  ConversationsRouter.swift
+//  ProfileRouter.swift
 //  Messenger
 //
-//  Created by Mac on 13/01/22.
+//  Created by Mac on 17/01/22.
 //
 
 import Foundation
 import UIKit
 
-class ConversationsRouter{
+class ProfileRouter{
     var navigation: UINavigationController?
 }
 
-extension ConversationsRouter: ConversationsRouterProtocol{
+extension ProfileRouter: ProfileRouterProtocol{
     func navigateNextView() {
         if let nav = self.navigation {
-            let vc = ProfileMain.createModule(navigation: nav)
+            let vc = ConversationsMain.createModule(navigation: nav)
             nav.pushViewController(vc, animated: false)
     }
     }
-    
 }
