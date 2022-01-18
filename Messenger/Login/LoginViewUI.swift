@@ -8,6 +8,9 @@
 import Foundation
 import UIKit
 import FirebaseAuth
+import FBSDKLoginKit
+
+
 
 protocol LoginViewUIDelegate {
     func notifyFailureError(messageError: String)
@@ -80,6 +83,11 @@ class LoginViewUI: UIView{
         return button
     }()
     
+    private let facebookLoginButton: FBLoginButton = {
+    let button = FBLoginButton()
+        button.translatesAutoresizingMaskIntoConstraints = false
+        return button
+    }()
     
     public convenience init(
         navigation: UINavigationController,
@@ -89,6 +97,8 @@ class LoginViewUI: UIView{
             self.navigationController = navigation
             emailField.delegate = self
             passwordField.delegate = self
+            
+            
             setUI()
             setConstraints()
         }
@@ -108,6 +118,7 @@ class LoginViewUI: UIView{
         scrollView.addSubview(emailField)
         scrollView.addSubview(passwordField)
         scrollView.addSubview(loginButton)
+        scrollView.addSubview(facebookLoginButton)
         
     }
     
@@ -136,6 +147,12 @@ class LoginViewUI: UIView{
             loginButton.topAnchor.constraint(equalTo: passwordField.bottomAnchor, constant:  50),
             loginButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
             loginButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
+            loginButton.heightAnchor.constraint(equalToConstant: 50),
+            
+            facebookLoginButton.topAnchor.constraint(equalTo: loginButton.bottomAnchor, constant: 20),
+            facebookLoginButton.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
+            facebookLoginButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
+            
         ])
     }
     @objc private func loginButtonTapped(){
