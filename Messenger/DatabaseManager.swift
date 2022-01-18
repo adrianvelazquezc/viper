@@ -17,9 +17,11 @@ final class DatabaseManager {
 
 // Mark: account managmen
 extension DatabaseManager {
-    public func userExists(widh email:String, completion: @escaping((Bool) -> Void)){
+    public func userExists(widh email:String,
+                           completion: @escaping((Bool) -> Void)){
+        
         var safeEmail = email.replacingOccurrences(of: ".", with: "-")
-         safeEmail = email.replacingOccurrences(of: "@", with: "-")
+         safeEmail = safeEmail.replacingOccurrences(of: "@", with: "-")
         
         database.child(safeEmail).observeSingleEvent(of: .value, with: { snapshot in
             guard snapshot.value as? String != nil else {
@@ -33,7 +35,7 @@ extension DatabaseManager {
     
     
     public func insertUser(with user: ChatAppUser){
-        database.child(user.emailAddress).setValue([
+        database.child(user.safeEmail).setValue([
             "first_name": user.firstName,
             "last_name": user.lastName
         ])

@@ -13,6 +13,13 @@ class LoginRouter{
 }
 
 extension LoginRouter: LoginRouterProtocol{
+    func navigateLogedInView() {
+        if let nav = self.navigation {
+            let vc = ConversationsMain.createModule(navigation: nav)
+            nav.pushViewController(vc, animated: true)
+        }
+    }
+    
     func navigateNextView() {
             if let nav = self.navigation {
                 let vc = RegisterMain.createModule(navigation: nav)

@@ -16,6 +16,10 @@ class ProfilePresenter {
 
 
 extension ProfilePresenter: ProfilePresenterProtocol {
+    func requestLogOut() {
+        router?.navigateLogOut()
+    }
+    
     func requestNextView() {
         router?.navigateNextView()
     }

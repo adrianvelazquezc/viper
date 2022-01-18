@@ -22,7 +22,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         window?.makeKeyAndVisible() //para hacerla la principal y visible
         //navigation.isNavigationBarHidden = true
         
-        if Firebase.Auth.auth().currentUser != nil{
+        if Firebase.Auth.auth().currentUser == nil{
             let vc = LoginMain.createModule(navigation: navigation)
                 navigation.pushViewController(vc, animated: true)
         } else {

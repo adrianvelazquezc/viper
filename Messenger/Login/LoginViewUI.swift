@@ -11,6 +11,7 @@ import FirebaseAuth
 
 protocol LoginViewUIDelegate {
     func notifyFailureError(messageError: String)
+    func logedInSuccess()
 }
 
 class LoginViewUI: UIView{
@@ -158,7 +159,7 @@ class LoginViewUI: UIView{
             }
             let user = result.user
             print("Logged In User: \(user)")
-            self?.navigationController?.popViewController(animated: true)
+            self?.delegate?.logedInSuccess()
         })
     }
 }

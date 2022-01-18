@@ -7,14 +7,17 @@
 
 import Foundation
 import UIKit
+import FirebaseAuth
 
 protocol ProfileViewUIDelegate {
     func notifyNextView()
+    func notifySheet()
 }
 
 class ProfileViewUI: UIView{
     var delegate: ProfileViewUIDelegate?
     var navigationController: UINavigationController?
+    let data = ["Log out"]
     
     private lazy var titleLabel: UILabel = {
        let label = UILabel()
@@ -24,6 +27,14 @@ class ProfileViewUI: UIView{
         return label
     }()
     
+    
+       private let tableView: UITableView = {
+           let tableView = UITableView()
+           tableView.translatesAutoresizingMaskIntoConstraints = false
+           tableView.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+           return tableView
+       }()
+    
     private lazy var item1Button: UIButton = {
        let button = UIButton()
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -31,6 +42,7 @@ class ProfileViewUI: UIView{
         button.layer.borderWidth = 0.5
         button.layer.borderColor = UIColor.lightGray.cgColor
         button.addTarget(self, action:#selector(tabBarTouched), for: .touchUpInside)
+        button.setTitleColor(UIColor.black, for: .normal)
         return button
     }()
     private lazy var item2Button: UIButton = {
@@ -39,6 +51,7 @@ class ProfileViewUI: UIView{
         button.setTitle("Profile", for: .normal)
         button.layer.borderWidth = 0.5
         button.layer.borderColor = UIColor.lightGray.cgColor
+        button.setTitleColor(UIColor.black, for: .normal)
         return button
     }()
     
@@ -63,11 +76,15 @@ class ProfileViewUI: UIView{
     }
     
     func setUI(){
-        self.backgroundColor = .gray
+        self.backgroundColor = .white
         self.addSubview(titleLabel)
         self.addSubview(item1Button)
         self.addSubview(item2Button)
+        tableView.dataSource = self
+        tableView.delegate = self
+        self.addSubview(tableView)
     }
+    
     
     func setConstraints(){
         NSLayoutConstraint.activate([
@@ -76,10 +93,15 @@ class ProfileViewUI: UIView{
             titleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor),
             titleLabel.heightAnchor.constraint(equalToConstant: 100),
             
+            tableView.topAnchor.constraint(equalTo: titleLabel.bottomAnchor),
+            tableView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            tableView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+            tableView.bottomAnchor.constraint(equalTo: item1Button.topAnchor),
+            
             item1Button.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
             item1Button.leadingAnchor.constraint(equalTo: self.leadingAnchor),
             item1Button.trailingAnchor.constraint(equalTo: self.centerXAnchor),
-            
+
                 item2Button.bottomAnchor.constraint(equalTo: safeAreaLayoutGuide.bottomAnchor),
                 item2Button.trailingAnchor.constraint(equalTo: self.trailingAnchor),
                 item2Button.leadingAnchor.constraint(equalTo: self.centerXAnchor),
@@ -92,3 +114,23 @@ class ProfileViewUI: UIView{
     
 }
 
+
+extension ProfileViewUI: UITableViewDataSource, UITableViewDelegate{
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return data.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "cell", for: indexPath)
+        cell.textLabel?.text = data[indexPath.row]
+        cell.textLabel?.textColor = .red
+        cell.textLabel?.textAlignment = .center
+        return cell
+    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+        print("charging")
+        self.delegate?.notifySheet()
+    }
+}

@@ -13,6 +13,13 @@ class ProfileRouter{
 }
 
 extension ProfileRouter: ProfileRouterProtocol{
+    func navigateLogOut() {
+        if let nav = self.navigation {
+            let vc = LoginMain.createModule(navigation: nav)
+            nav.pushViewController(vc, animated: false)
+    }
+    }
+    
     func navigateNextView() {
         if let nav = self.navigation {
             let vc = ConversationsMain.createModule(navigation: nav)

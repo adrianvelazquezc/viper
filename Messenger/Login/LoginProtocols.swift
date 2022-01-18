@@ -16,8 +16,10 @@ protocol LoginInteractorProtocol: AnyObject {
 
 protocol LoginPresenterProtocol: AnyObject {
     func requestNextView()
+    func requestLogedInView()
 }
 
 protocol LoginRouterProtocol: AnyObject {
     func navigateNextView()
+    func navigateLogedInView()
 }

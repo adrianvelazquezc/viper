@@ -30,7 +30,10 @@ class LoginView: UIViewController {
         view = ui
     }
     
-    
+    override func viewDidLoad() {
+       super.viewDidLoad()
+       self.navigationItem.setHidesBackButton(true, animated: false)
+    }
     func showError(message: String){
         let alert = UIAlertController(title: "Woops", message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
@@ -45,6 +48,10 @@ extension LoginView: LoginViewProtocol {
 }
 
 extension LoginView: LoginViewUIDelegate {
+    func logedInSuccess() {
+        self.presenter?.requestLogedInView()
+    }
+    
     func notifyFailureError(messageError: String) {
             self.showError(message: messageError)
     }

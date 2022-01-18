@@ -17,8 +17,10 @@ protocol ProfileInteractorProtocol: AnyObject {
 
 protocol ProfilePresenterProtocol: AnyObject {
     func requestNextView()
+    func requestLogOut()
 }
 
 protocol ProfileRouterProtocol: AnyObject {
     func navigateNextView()
+    func navigateLogOut()
 }

@@ -7,6 +7,7 @@
 
 import Foundation
 import UIKit
+import FirebaseAuth
 
 class ProfileView: UIViewController {
     var presenter: ProfilePresenterProtocol?
@@ -26,6 +27,32 @@ class ProfileView: UIViewController {
         super.viewWillAppear(animated)
         navigationController?.setNavigationBarHidden(true, animated: animated)
     }
+    
+    func presentProfileActionSheet(){
+        
+        let actionSheet = UIAlertController(title: "",
+                                            message: "",
+                                            preferredStyle: .actionSheet)
+        actionSheet.addAction(UIAlertAction(title: "Log Out", style: .destructive, handler: { [weak self] _ in
+            guard let strongSelf = self else {
+                return
+            }
+            
+            do {
+                try FirebaseAuth.Auth.auth().signOut()
+                self?.presenter?.requestLogOut()
+            }
+            catch {
+                print("failed to log out")
+            }
+            
+        }))
+        
+        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        self.present(actionSheet, animated: true, completion: nil)
+    }
+    
 }
 
 extension ProfileView: ProfileViewProtocol {
@@ -33,6 +60,10 @@ extension ProfileView: ProfileViewProtocol {
 }
 
 extension ProfileView: ProfileViewUIDelegate {
+    func notifySheet() {
+        self.presentProfileActionSheet()
+    }
+    
     func notifyNextView() {
         self.presenter?.requestNextView()
     }

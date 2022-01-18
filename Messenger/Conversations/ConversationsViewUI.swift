@@ -30,6 +30,7 @@ class ConversationsViewUI: UIView{
         button.setTitle("Chats", for: .normal)
         button.layer.borderWidth = 0.5
         button.layer.borderColor = UIColor.lightGray.cgColor
+        button.setTitleColor(UIColor.black, for: .normal)
         return button
     }()
     
@@ -39,6 +40,7 @@ class ConversationsViewUI: UIView{
         button.setTitle("Profile", for: .normal)
         button.layer.borderWidth = 0.5
         button.layer.borderColor = UIColor.lightGray.cgColor
+        button.setTitleColor(UIColor.black, for: .normal)
         button.addTarget(self, action:#selector(tabBarTouched), for: .touchUpInside)
         return button
     }()
@@ -62,7 +64,7 @@ class ConversationsViewUI: UIView{
     }
     
     func setUI(){
-        self.backgroundColor = .red
+        self.backgroundColor = .white
         self.addSubview(titleLabel)
         self.addSubview(item1Button)
         self.addSubview(item2Button)

@@ -16,6 +16,10 @@ class LoginPresenter {
 
 
 extension LoginPresenter: LoginPresenterProtocol {
+    func requestLogedInView() {
+        self.router?.navigateLogedInView()
+    }
+    
     func requestNextView() {
         self.router?.navigateNextView()
     }
